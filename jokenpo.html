@@ -1,12 +1,164 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Jokenpo Game</title>
+    <style>
+        /* Resetando margens e paddings */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* Estilo do corpo da página */
+        body {
+            background-color: #f0f8ff;
+            /* Azul claro para o fundo */
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Container principal */
+        .game-container {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            width: 90%;
+            max-width: 500px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        /* Estilos para os títulos */
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            color: #7f8c8d;
+            font-size: 1rem;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        /* Container de entrada */
+        .input-container {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .input-row {
+            display: flex;
+            width: 100%;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        label {
+            color: #2c3e50;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input {
+            padding: 8px 12px;
+            border: 2px solid #ddd;
+            border-radius: 4px;
+            flex-grow: 1;
+            max-width: 200px;
+        }
+
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 8px 16px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        /* Container de pontuação */
+        .score-container {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            background-color: #f5f5f5;
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        .score-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h3 {
+            color: #2c3e50;
+            font-size: 1rem;
+            margin-bottom: 5px;
+        }
+
+        span {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #e74c3c;
+        }
+
+        #computer {
+            color: #3498db;
+        }
+    </style>
 </head>
+
 <body>
+    <div class="game-container">
+        <div class="title-container">
+            <h1>Jokenpo Game</h1>
+            <h2>The winner is who beats at least 3 times.</h2>
+        </div>
+
+        <div class="input-container">
+            <label for="item">Choose your hand:</label>
+            <div class="input-row">
+                <input type="text" id="item" placeholder="Rock, Paper or Scissors">
+                <button>Play</button>
+            </div>
+        </div>
+
+        <div class="score-container">
+            <div class="score-item">
+                <h3>Your Score:</h3>
+                <span>0</span>
+            </div>
+            <div class="score-item">
+                <h3>Computer Score:</h3>
+                <span id="computer">0</span>
+            </div>
+        </div>
+    </div>
+
     <script src="joke.js"></script>
-    
 </body>
+
 </html>

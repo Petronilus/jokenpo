@@ -1,4 +1,13 @@
 
+const input = document.querySelector("input");
+const button = document.querySelector("button");
+const span = document.querySelector("span");
+const computerSpan = document.querySelector("#computer");
+
+button.addEventListener("click", game);
+
+
+
 const options = ["rock", "paper", "scissors"];
 
 function getComputerChoice() {
@@ -8,7 +17,11 @@ function getComputerChoice() {
 }
 
 function checkWinner(playerSelection, computerSelection) {
-    if (playerSelection == computerSelection) {
+    if (playerSelection == "ERROR") {
+        return "ERROR";
+    }
+    
+    else if (playerSelection == computerSelection) {
         return "Tie";
     }
     else if (
@@ -29,33 +42,39 @@ function playRound(playerSelection, computerSelection) {
     else if (result == "Player") {
         return "You Win!"
     }
-    else {
+    else if (result == "Computer") {
         return "You lose!"
+    }
+
+    else if (result == "ERROR") {
+        return "ERROR"
     }
 
 }
 
 function getPlayerChoice() {
-    let validatedInput = false;
-    while (validatedInput == false) {
-        const choicep = prompt("Rock Paper Scissors");
-        if (choicep == null) {
-            continue;
-        }
+    const choicep = input.value;
         const choiceInLower = choicep.toLowerCase();
         if (options.includes(choiceInLower)) {
-            validatedInput = true;
             return choiceInLower;
         }
-    }
-}
+        else {
+            return "ERROR"
+        }
+};
+
+let score = 0;
+let scoreComputer = 0;
 
 function game() {
-    let score = 0;
-    let scoreComputer = 0;
+    
     console.log("Welcome!")
-    for (let i = 0; i < 3; i++) {
+    for (let i = 0; i < 1; i++) {
         const playerSelection = getPlayerChoice();
+        if (playerSelection === "ERROR") {
+            console.log("Error: Invalid choice. Please choose rock, paper, or scissors.");
+            return; // Termina o jogo aqui caso a escolha do jogador seja inválida
+        }
         const computerSelection = getComputerChoice();
         console.log(playRound(playerSelection, computerSelection));
         console.log("-----------------------------------");
@@ -67,15 +86,18 @@ function game() {
         }
     }
     console.log("Game Over")
-    if (score > scoreComputer) {
+     if (score > scoreComputer) {
         console.log("You are the Champion, my friend!");
     }
     else if(score < scoreComputer){
         console.log("Go home, man...");
-    }
-    else {
-        console.log("It's a tie!");
-    }
-}
+     }
+    
+    input.value = "";
+    input.focus();
+    
+    span.textContent = score;
+    computerSpan.textContent = scoreComputer;
 
-game()
+   
+}
